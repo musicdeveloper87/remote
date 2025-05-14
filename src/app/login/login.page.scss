@@ -1,0 +1,163 @@
+/* Estilos para el formulario de inicio de sesión */
+
+/* Centrar el formulario */
+.login-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Estilos para el logo */
+.logo-google {
+  margin-bottom: 20px;
+}
+
+.logo-google img {
+  width: 300px; /* Ajustar el tamaño del logo según sea necesario */
+}
+
+/* Estilos para el texto de introducción */
+.text-dark {
+  color: #333; /* Color de texto oscuro */
+}
+
+/* Estilos para los campos de entrada */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 300px; /* Ancho de los campos de entrada */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Estilos para el botón de enviar */
+.btn-dark {
+  background-color: #000e6d; /* Color de fondo oscuro */
+  color: #fff; /* Color de texto blanco */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 300px;
+}
+
+.btn-dark:hover {
+  background-color: #555; /* Color de fondo oscuro cuando se pasa el mouse */
+}
+
+/* Estilos para el texto adicional */
+.login-text {
+  color: #666; /* Color de texto gris */
+  text-align: center;
+}
+
+::ng-deep .custom-toast {
+  --border-radius: 15px;
+  --border-style: solid;
+  --border-width: 1px;
+  --border-color: rgba(var(--ion-color-primary-rgb), 0.2);
+  --background: rgba(var(--ion-color-primary-rgb), 0.1);
+  --color: var(--ion-color-primary);
+  --box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 40px;
+
+  .logo-image {
+    max-width: 150px;
+    height: auto;
+  }
+}
+
+.form-container {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-text {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--ion-color-dark);
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.subtitle-text {
+  color: var(--ion-color-medium);
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.input-container {
+  margin-bottom: 16px;
+
+  ion-item {
+    --background: #f8f9fa;
+    --border-radius: 8px;
+    --padding-start: 12px;
+    --padding-end: 12px;
+    --min-height: 48px;
+
+    ion-icon {
+      color: var(--ion-color-medium);
+      margin-right: 8px;
+    }
+
+    ion-input {
+      --padding-start: 8px;
+      font-size: 14px;
+    }
+  }
+}
+
+.button-container {
+  margin-top: 24px;
+
+  .login-button {
+    --border-radius: 8px;
+    --box-shadow: none;
+    height: 48px;
+    font-weight: 500;
+    text-transform: none;
+    font-size: 16px;
+  }
+}
+
+.info-text {
+  text-align: center;
+  font-size: 12px;
+  color: var(--ion-color-medium);
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+// Estilos para modo oscuro
+@media (prefers-color-scheme: dark) {
+  .form-container {
+    background: var(--ion-background-color);
+  }
+
+  .input-container ion-item {
+    --background: rgba(var(--ion-color-dark-rgb), 0.1);
+  }
+}

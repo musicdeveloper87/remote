@@ -1,0 +1,151 @@
+<div class="click-overlay-fix"></div>
+
+<ion-content class="ion-padding">
+  <div class="main-container" style="position: relative; z-index: 100;">
+    <!-- Card de bienvenida -->
+    <ion-card *ngIf="!mostrarFormulario" class="welcome-card" style="position: relative; z-index: 101;">
+      <ion-card-header>
+        <ion-card-title>Agendamiento de Soporte Técnico</ion-card-title>
+        <ion-card-subtitle>Bienvenido a Imocom</ion-card-subtitle>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <ion-img src="assets/images/bg-auth.jpg" alt="Imagen" class="welcome-image"></ion-img>
+        <p class="welcome-text">
+          Seleccione la máquina que necesita soporte y agende una cita con nuestros expertos. 
+          Asegúrese de tener su kit de AR listo para la videollamada.
+        </p>
+        <ion-button expand="block" (click)="mostrarFormulariof()" class="start-button">
+          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+          Agendar Soporte
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Formulario de agendamiento -->
+    <ion-card *ngIf="mostrarFormulario" class="form-card" style="position: relative; z-index: 101;">
+      <form [formGroup]="citaForm" (ngSubmit)="agendarCita()" class="appointment-form">
+        <ion-item class="search-item">
+          <ion-searchbar 
+            placeholder="Buscar equipo" 
+            formControlName="buscarEquipo" 
+            (ionInput)="buscarEquipo($event)"
+            class="custom-searchbar">
+          </ion-searchbar>
+        </ion-item>
+
+        <!-- Resultados de búsqueda -->
+        <div class="search-results" *ngIf="equiposFiltrados.length > 0">
+          <ion-list>
+            <ion-item *ngFor="let equipo of equiposFiltrados" 
+                      (click)="seleccionarEquipo(equipo)"
+                      class="equipment-item">
+              <ion-label>
+                <h2>{{ equipo.nombreEquipo }}</h2>
+                <p>{{ equipo.linea?.nombre || 'CALI' }}</p>
+              </ion-label>
+              <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </div>
+
+        <!-- Detalles del equipo seleccionado -->
+        <div class="equipment-details" *ngIf="equipoSeleccionado">
+          <ion-card class="detail-card">
+            <ion-card-header>
+              <ion-card-title>{{ equipoSeleccionado.nombreEquipo }}</ion-card-title>
+              <ion-card-subtitle>{{ equipoSeleccionado.linea?.nombre || 'CALI' }}</ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="6">
+                    <div class="detail-item">
+                      <ion-label class="label-title">Referencia</ion-label>
+                      <ion-label class="label-content">{{ equipoSeleccionado.referencia }}</ion-label>
+                    </div>
+                  </ion-col>
+                  <ion-col size="6">
+                    <div class="detail-item">
+                      <ion-label class="label-title">Tipo</ion-label>
+                      <ion-label class="label-content">{{ equipoSeleccionado.tipo }}</ion-label>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+
+              <div class="description-field">
+                <ion-item lines="none">
+                  <ion-label position="stacked">Descripción del problema</ion-label>
+                  <ion-textarea 
+                    formControlName="descripcionProblema"
+                    placeholder="Describa el problema que presenta el equipo"
+                    rows="3"
+                    class="custom-textarea">
+                  </ion-textarea>
+                </ion-item>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+
+        <ion-button 
+          expand="block" 
+          type="submit" 
+          [disabled]="!citaForm.valid"
+          class="submit-button">
+          <ion-icon name="calendar-check-outline" slot="start"></ion-icon>
+          Solicitar servicio técnico
+        </ion-button>
+      </form>
+    </ion-card>
+  </div>
+</ion-content>
+
+<style>
+  ion-header {
+    ion-toolbar {
+      --background: transparent;
+      --border-width: 0 !important;
+      
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 16px;
+
+        .logo-container {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          
+          .logo-image {
+            height: 24px;
+            width: auto;
+            object-fit: contain;
+          }
+        }
+
+        .logout-button {
+          position: absolute;
+          right: 8px;
+          --padding-start: 8px;
+          --padding-end: 8px;
+          height: 36px;
+          
+          ion-icon {
+            font-size: 20px;
+            color: var(--ion-color-medium);
+          }
+
+          &:hover {
+            ion-icon {
+              color: var(--ion-color-danger);
+            }
+          }
+        }
+      }
+    }
+  }
+</style>

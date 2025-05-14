@@ -1,0 +1,63 @@
+<div class="click-overlay-fix"></div>
+
+<ion-content class="ion-padding" (click)="handleContentClick($event)">
+  <div class="main-container">
+    <ion-list class="appointments-list">
+      <ion-card *ngFor="let cita of citasAgendadas" class="appointment-card">
+        <ion-card-header>
+          <div class="card-header-content">
+            <div>
+              <ion-card-title>{{ cita.maquina?.nombreEquipo || 'Sin equipo' }}</ion-card-title>
+              <ion-card-subtitle>{{ cita.maquina?.linea?.nombre || 'Sin línea' }}</ion-card-subtitle>
+            </div>
+            <ion-badge [color]="cita.estatus === 'nueva' ? 'warning' : 'success'">
+              {{ cita.estatus === 'nueva' ? 'En solicitud' : 'Agendada' }}
+            </ion-badge>
+          </div>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="appointment-details">
+            <div class="detail-row">
+              <div class="detail-item">
+                <ion-icon name="person-outline" color="primary"></ion-icon>
+                <span>{{ cita.tecnico === 'sin asignar' ? 'Sin asignar' : cita.tecnico?.nombre }}</span>
+              </div>
+              <div class="detail-item">
+                <ion-icon name="calendar-outline" color="primary"></ion-icon>
+                <span>{{ cita.fecha || 'Pendiente' }}</span>
+              </div>
+            </div>
+            
+            <div class="detail-row">
+              <div class="detail-item">
+                <ion-icon name="document-text-outline" color="primary"></ion-icon>
+                <span>{{ cita.problema || 'Sin descripción' }}</span>
+              </div>
+            </div>
+            
+            <div class="button-group">
+              <ion-button 
+                expand="block" 
+                class="join-button"
+                (click)="iniciarCita(cita)">
+                <ion-icon name="videocam-outline" slot="start"></ion-icon>
+                Ingresar a la capacitación
+              </ion-button>
+              
+              <ion-button 
+                fill="clear"
+                size="small"
+                class="cancel-button"
+                color="medium"
+                (click)="confirmarCancelacion(cita)">
+                <ion-icon name="close-circle-outline" slot="start"></ion-icon>
+                Cancelar cita
+              </ion-button>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+</ion-content>

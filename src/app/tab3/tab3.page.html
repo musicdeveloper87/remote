@@ -1,0 +1,65 @@
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="recargarComponente($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Desliza para recargar"
+      refreshingSpinner="circles"
+      refreshingText="Recargando...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-button 
+    fill="clear" 
+    class="back-button" 
+    (click)="goBack()"
+    color="light">
+    <ion-icon name="arrow-back-outline"></ion-icon>
+  </ion-button>
+  
+  <div id="jitsi-iframe" #jitsiContainer (click)="toggleControls()"></div>
+</ion-content>
+
+<style>
+  :host {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .back-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 10002;
+    --background: rgba(0, 0, 0, 0.3);
+    --border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+  }
+
+  #jitsi-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 99;
+    background: #000;
+    pointer-events: auto !important;
+  }
+
+  ion-content {
+    --background: #000;
+  }
+
+  ion-refresher {
+    z-index: 10002;
+  }
+</style>
+
+
+
+
+
+

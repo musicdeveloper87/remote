@@ -1,0 +1,56 @@
+.custom-tabs {
+  --background: white;
+  border-radius: 16px 16px 0 0;
+  padding: 10px 10px 10px 10px;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+  height: 65px;
+
+  ion-tab-button {
+    --color: var(--ion-color-medium);
+    --color-selected: var(--ion-color-primary);
+    --padding-bottom: 8px;
+    --padding-top: 8px;
+    
+    &::before {
+      background-color: transparent;
+      display: block;
+      content: "";
+      margin: 0 auto;
+      width: 20px;
+      height: 2px;
+      bottom: 0;
+      position: absolute;
+      transition: transform 0.2s ease;
+    }
+
+    &.tab-selected {
+      ion-icon {
+        transform: translateY(-2px);
+      }
+
+      &::before {
+        background-color: var(--ion-color-primary);
+        transform: scale(2);
+      }
+    }
+
+    ion-icon {
+      font-size: 24px;
+      transition: transform 0.2s ease;
+    }
+
+    ion-label {
+      font-size: 12px;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+  }
+}
+
+// Soporte para modo oscuro
+@media (prefers-color-scheme: dark) {
+  .custom-tabs {
+    --background: var(--ion-background-color);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+  }
+}

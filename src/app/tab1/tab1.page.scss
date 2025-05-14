@@ -1,0 +1,267 @@
+/* Estilos para el encabezado */
+.header-blue {
+  --background: #007bff; /* Color azul */
+  --ion-color-base: #fff; /* Color del texto */
+  text-align: center; /* Para centrar el logo */
+}
+
+/* Estilos para la imagen dentro del título */
+.header-blue ion-title img {
+  max-width: 100px; /* Ancho máximo del logo */
+}
+
+/* Estilos adicionales para mejorar la apariencia del formulario */
+ion-card-content {
+  margin-top: 10px;
+}
+
+ion-card-content p {
+  margin-bottom: 10px;
+}
+
+ion-item {
+  margin-top: 10px;
+}
+
+ion-item ion-label {
+  font-weight: bold;
+}
+
+ion-item ion-textarea {
+  min-height: 100px; /* Ajustar según sea necesario */
+}
+
+ion-button {
+  margin-top: 20px;
+}
+
+.custom-header {
+  background: transparent;
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+
+    .logo-image {
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .logout-button {
+      --color: var(--ion-color-medium);
+    }
+  }
+}
+
+.main-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.welcome-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 16px 0;
+
+  ion-card-header {
+    background: #0066B3;  // Color azul de RemoteView
+    color: white;
+    padding: 20px;
+
+    ion-card-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: white;  // Aseguramos que el título sea blanco
+    }
+
+    ion-card-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  .welcome-image {
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 16px 0;
+  }
+
+  .welcome-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ion-color-medium);
+    margin: 16px 0;
+  }
+
+  .start-button {
+    margin-top: 16px;
+    --border-radius: 8px;
+  }
+}
+
+.form-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 16px 0;
+
+  .appointment-form {
+    padding: 16px;
+  }
+
+  .custom-searchbar {
+    --border-radius: 8px;
+    --box-shadow: none;
+    --background: var(--ion-color-light);
+  }
+
+  .equipment-item {
+    --border-radius: 8px;
+    margin: 8px 0;
+    
+    h2 {
+      font-weight: 500;
+      color: var(--ion-color-dark);
+      margin-bottom: 4px;
+    }
+
+    p {
+      color: var(--ion-color-primary);
+      font-size: 14px;
+    }
+
+    ion-icon {
+      color: var(--ion-color-medium);
+    }
+  }
+
+  .equipment-details {
+    margin: 16px 0;
+
+    .detail-card {
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin: 0;
+
+      ion-card-header {
+        padding: 16px;
+        
+        ion-card-title {
+          font-size: 20px;
+          font-weight: 600;
+          color: var(--ion-color-dark);
+        }
+
+        ion-card-subtitle {
+          font-size: 14px;
+          color: var(--ion-color-primary);
+          margin-top: 4px;
+        }
+      }
+
+      ion-card-content {
+        padding: 0 16px 16px;
+
+        .detail-item {
+          margin-bottom: 12px;
+          
+          .label-title {
+            font-size: 12px;
+            color: var(--ion-color-medium);
+            display: block;
+            margin-bottom: 4px;
+          }
+
+          .label-content {
+            font-size: 16px;
+            color: var(--ion-color-dark);
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    .description-field {
+      margin-top: 16px;
+      
+      ion-item {
+        --padding-start: 0;
+        --inner-padding-end: 0;
+        
+        ion-label {
+          color: var(--ion-color-medium);
+          font-size: 14px;
+          margin-bottom: 8px;
+        }
+      }
+    }
+
+    .custom-textarea {
+      --background: var(--ion-color-light);
+      --padding-start: 16px;
+      --padding-end: 16px;
+      --padding-top: 8px;
+      border-radius: 8px;
+      margin-top: 8px;
+    }
+  }
+
+  .submit-button {
+    margin-top: 24px;
+    --border-radius: 8px;
+  }
+}
+
+// Soporte para modo oscuro
+@media (prefers-color-scheme: dark) {
+  .welcome-card, .form-card {
+    background: var(--ion-card-background);
+  }
+}
+
+ion-header {
+  ion-toolbar {
+    --background: transparent;
+    --border-width: 0 !important;
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 16px;
+
+      .logo-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        
+        .logo-image {
+          height: 32px;
+          width: auto;
+          object-fit: contain;
+        }
+      }
+
+      .logout-button {
+        --padding-start: 8px;
+        --padding-end: 8px;
+        height: 32px;
+        margin-top: -4px;
+        
+        ion-icon {
+          font-size: 24px;
+          color: var(--ion-color-primary-shade);
+        }
+
+        &:hover {
+          ion-icon {
+            color: var(--ion-color-danger);
+          }
+        }
+      }
+    }
+  }
+}
+
